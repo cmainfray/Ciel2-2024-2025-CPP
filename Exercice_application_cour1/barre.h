@@ -10,15 +10,15 @@ using namespace std;
 class Barre
 {
 public:
-    Barre(const string _reference, const string _nomAlliage, const int _longueur, const float _densite);
-    void AfficherCaracteristique();
+    Barre(const string _reference, const string _nomAlliage, const int _longueur, const double _densite);
+    void AfficherCaracteristique() const;
 
 
 protected:
     string reference;
     string nomAlliage;
     int longueur;
-    float densite;
+    double densite;
 };
 
 #endif // BARRE_H
