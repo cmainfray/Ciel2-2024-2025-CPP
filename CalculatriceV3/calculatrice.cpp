@@ -13,7 +13,9 @@ Calculatrice::Calculatrice(QWidget *parent)
     grille = new QGridLayout;
     afficheur = new QLineEdit;
     afficheur->setMinimumHeight(50);
-    afficheur->setStyleSheet("background-color: rgb(143, 240, 164);");
+    afficheur->setStyleSheet("font-size: 25px ; background-color: rgb(143, 240, 164); ");
+    afficheur->setAlignment(Qt::AlignRight);
+    afficheur->setReadOnly(true);
     touches = new QPushButton*[NB_TOUCHES];
     grille->addWidget(afficheur,0,0,1,4);
     this->setLayout(grille);
