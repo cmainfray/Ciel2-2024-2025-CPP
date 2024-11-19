@@ -15,10 +15,13 @@ Trajectoire::~Trajectoire() {
 bool Trajectoire::Ajouter(Element *_pElement)
 {
     bool retour = true;
-    if (prochaineEtape < nbEtapesMax)
+    if (prochaineEtape < nbEtapesMax){
         parcours[prochaineEtape++] = _pElement ;
+        _pElement ->setNumero(prochaineEtape);
+    }
     else
         retour = false;
+
     return retour;
 }
 

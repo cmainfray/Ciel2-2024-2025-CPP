@@ -53,12 +53,17 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../LaBanque/comptebancaire.cpp \
+		../LaBanque/comptecilent.cpp \
+		../LaBanque/compteepargne.cpp \
 		../LaBanque/main.cpp \
 		../LaBanque/menu.cpp 
 OBJECTS       = comptebancaire.o \
+		comptecilent.o \
+		compteepargne.o \
 		main.o \
 		menu.o
 DIST          = ../LaBanque/CompteBancaire.txt \
+		../LaBanque/compteEpargne.txt \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/common/linux.conf \
@@ -381,6 +386,7 @@ DIST          = ../LaBanque/CompteBancaire.txt \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/spec_post.prf \
+		../LaBanque/.qmake.stash \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -395,7 +401,11 @@ DIST          = ../LaBanque/CompteBancaire.txt \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/lex.prf \
 		../LaBanque/LaBanque.pro comptebancaire.h \
+		comptecilent.h \
+		compteepargne.h \
 		menu.h ../LaBanque/comptebancaire.cpp \
+		../LaBanque/comptecilent.cpp \
+		../LaBanque/compteepargne.cpp \
 		../LaBanque/main.cpp \
 		../LaBanque/menu.cpp
 QMAKE_TARGET  = LaBanque
@@ -731,6 +741,7 @@ Makefile: ../LaBanque/LaBanque.pro /opt/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt/6.7.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -1068,6 +1079,7 @@ Makefile: ../LaBanque/LaBanque.pro /opt/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.
 /opt/Qt/6.7.1/gcc_64/mkspecs/features/qt_config.prf:
 /opt/Qt/6.7.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /opt/Qt/6.7.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /opt/Qt/6.7.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/Qt/6.7.1/gcc_64/mkspecs/features/toolchain.prf:
 /opt/Qt/6.7.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -1128,7 +1140,18 @@ compiler_clean:
 comptebancaire.o: ../LaBanque/comptebancaire.cpp ../LaBanque/comptebancaire.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o comptebancaire.o ../LaBanque/comptebancaire.cpp
 
-main.o: ../LaBanque/main.cpp ../LaBanque/menu.h
+comptecilent.o: ../LaBanque/comptecilent.cpp ../LaBanque/comptecilent.h \
+		../LaBanque/comptebancaire.h \
+		../LaBanque/compteepargne.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o comptecilent.o ../LaBanque/comptecilent.cpp
+
+compteepargne.o: ../LaBanque/compteepargne.cpp ../LaBanque/compteepargne.h \
+		../LaBanque/comptebancaire.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o compteepargne.o ../LaBanque/compteepargne.cpp
+
+main.o: ../LaBanque/main.cpp ../LaBanque/menu.h \
+		../LaBanque/comptebancaire.h \
+		../LaBanque/compteepargne.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../LaBanque/main.cpp
 
 menu.o: ../LaBanque/menu.cpp ../LaBanque/menu.h

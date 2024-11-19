@@ -9,8 +9,8 @@ using namespace std;
 int main()
 {
     Trajectoire uneTrajectoire(9);
-    Segment unSegment(9,0);
-    Segment unSegment2(5,0.927295);
+    Segment unSegment(9,0,5);
+    Segment unSegment2(5,0.927295,2);
     uneTrajectoire.Ajouter(&unSegment);
     uneTrajectoire.Ajouter(&unSegment2);
     uneTrajectoire.Afficher();

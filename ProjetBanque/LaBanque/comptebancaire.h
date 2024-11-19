@@ -16,7 +16,7 @@ public:
     void Deposer(float _montant);
     bool Retirer(float _montant);
     float ConsulterSolde();
-private:
+protected:
     float solde;
 };
 
